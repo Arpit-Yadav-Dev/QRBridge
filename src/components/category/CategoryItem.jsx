@@ -1,8 +1,11 @@
 import React from "react";
+import { useCustomNavigate } from "../../functions/navigate";
 
 function CategoryItem({ title, items, className = "" }) {
+  const navigate = useCustomNavigate();
   return (
     <div
+      onClick={() => navigate("/qr-details-form")}
       className={`flex flex-wrap gap-5 justify-between p-5 mt-5 rounded border border-gray-200 border-solid bg-neutral-50 shadow-[0px_4px_16px_rgba(0,0,0,0.04)] max-md:max-w-full ${className}`}
     >
       <div className="flex flex-col">

@@ -1,7 +1,7 @@
-import * as React from "react";
+import React, { forwardRef, useState } from "react";
 
-export function PhoneInput() {
-  const [phoneNumber, setPhoneNumber] = React.useState("");
+export const PhoneInput = forwardRef((props, ref) => {
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const handlePhoneChange = (e) => {
     const value = e.target.value.replace(/\D/g, "");
@@ -31,6 +31,7 @@ export function PhoneInput() {
           name="phone"
           value={phoneNumber}
           onChange={handlePhoneChange}
+          ref={ref}
           className="flex-1 bg-transparent border-none outline-none text-sm text-zinc-900 placeholder-gray-400"
           placeholder="Enter your mobile number"
           pattern="[0-9]{10}"
@@ -41,4 +42,4 @@ export function PhoneInput() {
       </div>
     </div>
   );
-}
+});

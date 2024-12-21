@@ -1,6 +1,13 @@
 import * as React from "react";
 
-export function InputFieldAddItem({ label, value, id, multiline, disabled }) {
+export function InputFieldAddItem({
+  label,
+  value,
+  id,
+  multiline,
+  disabled,
+  onChange,
+}) {
   return (
     <>
       <label
@@ -9,17 +16,26 @@ export function InputFieldAddItem({ label, value, id, multiline, disabled }) {
       >
         {label}
       </label>
-      <div
-        role={multiline ? "textbox" : undefined}
-        tabIndex={multiline ? 0 : undefined}
-        aria-label={label}
-        id={id}
-        className={`px-3.5 py-5 mt-2 text-sm font-medium tracking-normal leading-snug rounded border border-gray-200 border-solid bg-neutral-50 text-ellipsis text-zinc-900 max-md:pr-5 max-md:max-w-full ${
-          multiline ? "pb-24 max-md:pb-28" : ""
-        }`}
-      >
-        {value}
-      </div>
+      {!multiline ? (
+        <input
+          id={id}
+          required
+          type="text"
+          value={value}
+          disabled={disabled}
+          onChange={onChange}
+          className="px-3.5 py-5 mt-2 text-sm font-medium tracking-normal leading-snug rounded border border-gray-200 border-solid bg-neutral-50 text-ellipsis text-zinc-900 max-md:pr-5 max-md:max-w-full"
+        />
+      ) : (
+        <textarea
+          required
+          id={id}
+          value={value}
+          disabled={disabled}
+          onChange={onChange}
+          className="px-3.5 py-5 mt-2 text-sm font-medium tracking-normal leading-snug rounded border border-gray-200 border-solid bg-neutral-50 text-ellipsis text-zinc-900 max-md:pr-5 max-md:max-w-full pb-24 max-md:pb-28"
+        />
+      )}
     </>
   );
 }

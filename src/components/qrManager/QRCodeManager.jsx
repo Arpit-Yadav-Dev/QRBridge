@@ -1,5 +1,6 @@
 import * as React from "react";
 import QRCodeItem from "./QRCodeItem";
+import { Header } from "../loginForm/Header";
 
 const qrCodeItems = [
   {
@@ -19,9 +20,7 @@ const qrCodeItems = [
 export default function QRCodeManager() {
   return (
     <div className="flex flex-col items-center w-full bg-white pb-[544px] max-md:pb-24 max-md:max-w-full">
-      <div className="self-stretch px-16 py-6 w-full text-base font-medium tracking-normal bg-white shadow-[0px_8px_16px_rgba(0,0,0,0.06)] text-zinc-900 max-md:px-5 max-md:max-w-full">
-        Manage QR Codes
-      </div>
+      <Header title="Manage QR Codes" />
       {qrCodeItems.map((item, index) => (
         <QRCodeItem
           key={index}

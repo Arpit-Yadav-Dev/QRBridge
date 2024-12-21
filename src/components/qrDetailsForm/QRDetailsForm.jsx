@@ -1,6 +1,8 @@
 import * as React from "react";
 import { ToggleSwitch } from "./ToggleSwitch";
 import { InputFieldAddItem } from "./InputFieldAddItem";
+import { Header } from "../loginForm/Header";
+import { useCustomNavigate } from "../../functions/navigate";
 
 const privacySettings = [
   {
@@ -18,13 +20,50 @@ const privacySettings = [
 ];
 
 function QRDetailsForm() {
+  const navigate = useCustomNavigate();
+  const [formValues, setFormValues] = React.useState({
+    qrName: "",
+    ownerName: "",
+    description: "",
+    dateRegistered: "20-January-2024",
+    switches: {
+      "personal-info": false,
+      "emergency-contacts": false,
+      address: false,
+    },
+  });
+
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setFormValues((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleSwitchChange = (id, checked) => {
+    setFormValues((prev) => ({
+      ...prev,
+      switches: { ...prev.switches, [id]: checked },
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form Submitted:", formValues);
+    navigate("/qr-manager");
+  };
+
   return (
-    <form className="flex flex-col pb-5 w-full bg-white max-md:max-w-full">
-      <div className="px-16 py-6 w-full text-base font-medium tracking-normal leading-snug bg-white shadow-[0px_8px_16px_rgba(0,0,0,0.06)] text-zinc-900 max-md:px-5 max-md:max-w-full">
-        Enter Details
-      </div>
+    <form
+      className="flex flex-col pb-5 w-full bg-white max-md:max-w-full"
+      onSubmit={handleSubmit}
+    >
+      <Header title="Enter Details" />
       <div className="flex flex-col px-5 mt-5 w-full max-md:max-w-full">
-        <InputFieldAddItem label="QR Name" value="Laptop" id="qr-name" />
+        <InputFieldAddItem
+          label="QR Name"
+          value={formValues.qrName}
+          id="qrName"
+          onChange={handleInputChange}
+        />
         <div className="self-start mt-5 text-xs font-medium tracking-tight leading-relaxed text-zinc-500">
           Item Photo
         </div>
@@ -39,19 +78,21 @@ function QRDetailsForm() {
         </div>
         <InputFieldAddItem
           label="Owner Name"
-          value="Sibin Thazhathethil"
-          id="owner-name"
+          value={formValues.ownerName}
+          id="ownerName"
+          onChange={handleInputChange}
         />
         <InputFieldAddItem
           label="Description"
-          value="Asus Laptop Silver Color"
+          value={formValues.description}
           id="description"
           multiline
+          onChange={handleInputChange}
         />
         <InputFieldAddItem
           label="Date Registered"
-          value="20-January-2024"
-          id="date-registered"
+          value={formValues.dateRegistered}
+          id="dateRegistered"
           disabled
         />
         {privacySettings.map((setting) => (
@@ -59,11 +100,13 @@ function QRDetailsForm() {
             key={setting.id}
             label={setting.label}
             id={setting.id}
+            isChecked={formValues.switches[setting.id]}
+            onChange={handleSwitchChange}
           />
         ))}
         <button
           type="submit"
-          className="overflow-hidden gap-2 self-stretch px-6 py-5 mt-6 text-sm font-medium tracking-normal leading-snug text-center text-white whitespace-nowrap bg-sky-600 rounded min-h-[48px] max-md:px-5"
+          className="overflow-hidden gap-2 self-stretch px-6 py-5 mt-6 text-sm font-medium tracking-normal leading-snug text-center text-white whitespace-nowrap bg-indigo-500 rounded min-h-[48px] max-md:px-5"
         >
           Submit
         </button>

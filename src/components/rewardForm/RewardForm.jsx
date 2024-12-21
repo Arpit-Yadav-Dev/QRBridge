@@ -7,7 +7,10 @@ function RewardForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col p-5 w-full bg-white">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col p-5 w-full bg-white absolute"
+    >
       <img
         loading="lazy"
         src="https://cdn.builder.io/api/v1/image/assets/TEMP/0a738a8f436e484faec3589780532b1eb7ad316396dd6c0f47abe14d9815664d?placeholderIfAbsent=true&apiKey=877e8cc34e814577be2645c5cab8e8b7"
@@ -43,7 +46,7 @@ function RewardForm() {
 
       <button
         type="submit"
-        className="overflow-hidden gap-2 self-stretch px-6 py-4 mt-5 text-center text-white whitespace-nowrap bg-sky-600 rounded min-h-[40px]"
+        className="overflow-hidden gap-2 self-stretch px-6 py-4 mt-5 text-center text-white whitespace-nowrap bg-indigo-600 rounded min-h-[40px]"
       >
         Submit
       </button>

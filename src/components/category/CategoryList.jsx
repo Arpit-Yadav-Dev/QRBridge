@@ -1,5 +1,6 @@
 import React from "react";
 import CategoryItem from "./CategoryItem";
+import { Header } from "../loginForm/Header";
 
 const categories = [
   {
@@ -31,9 +32,8 @@ const categories = [
 function CategoryList() {
   return (
     <div className="flex flex-col px-5 pt-6 pb-52 w-full bg-white max-md:pb-24 max-md:max-w-full">
-      <h1 className="self-center text-base font-medium tracking-normal text-zinc-900">
-        Select Category
-      </h1>
+      <Header title="Select Category" />
+
       {categories.map((category, index) => (
         <CategoryItem
           key={index}

@@ -1,8 +1,13 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function QRCodeItem({ image, title, category }) {
+  const navigate = useNavigate();
   return (
-    <div className="flex flex-wrap gap-5 justify-between px-5 py-4 mt-5 w-full rounded border border-gray-200 border-solid bg-neutral-50 max-w-[560px] shadow-[0px_4px_16px_rgba(0,0,0,0.04)] max-md:max-w-full">
+    <div
+      onClick={() => navigate("/qr-details")}
+      className="flex flex-wrap gap-5 justify-between px-5 py-4 mt-5 w-full rounded border border-gray-200 border-solid bg-neutral-50 max-w-[560px] shadow-[0px_4px_16px_rgba(0,0,0,0.04)] max-md:max-w-full"
+    >
       <div className="flex gap-5">
         <img
           loading="lazy"

@@ -3,7 +3,7 @@ import * as React from "react";
 export function ActionButton({ text, icon, bgColor }) {
   return (
     <div
-      className={`flex overflow-hidden flex-1 gap-1.5 px-6 py-3 text-white ${bgColor} rounded max-md:px-5`}
+      className={`flex  flex-1 gap-1.5 px-6 py-3 text-white ${bgColor} rounded max-md:px-5`}
     >
       <img
         loading="lazy"

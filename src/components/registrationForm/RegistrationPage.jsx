@@ -11,7 +11,7 @@ export function RegistrationPage() {
         alt="Registration QR Code"
       />
       <div
-        className="mt-20 text-lg tracking-normal leading-6 text-zinc-900 w-[353px] max-md:mt-10"
+        className="mt-20 text-lg tracking-normal leading-6 text-zinc-900 w-[353px] max-md:mt-10 text-center"
         role="text"
       >
         Register your QR code here to link it with your item for easy recovery
