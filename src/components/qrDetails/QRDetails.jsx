@@ -5,9 +5,11 @@ import { ToggleOption } from "./ToggleOption";
 import { ActionButton } from "./ActionButton";
 import { Header } from "../loginForm/Header";
 import RewardForm from "../rewardForm/RewardForm";
+import RewardList from "../rewardList/RewardList";
 
 export function QRDetails() {
-  const [reward, setreward] = React.useState(false);
+  const [showForm, setShowForm] = React.useState(false);
+  const [editForm, setEditForm] = React.useState(false);
   const infoFields = [
     { label: "QR Name", value: "Asus Laptop" },
     { label: "Category", value: "Personal Belongings" },
@@ -23,12 +25,12 @@ export function QRDetails() {
   ];
 
   const handleReward = () => {
-    setreward(true);
+    setShowForm(true);
   };
 
   return (
     <div className="flex flex-col pb-5 w-full bg-white max-md:max-w-full relative">
-      {reward && <RewardForm />}
+      {showForm && <RewardForm onClose={() => setShowForm(false)} />}
       <Header title="Details" />
       <div className="flex flex-col px-5 mt-5 w-full max-md:max-w-full">
         <ImageGallery />
@@ -61,7 +63,7 @@ export function QRDetails() {
             bgColor="bg-red-600"
           />
         </div>
-
+        <RewardList />
         <button
           onClick={handleReward}
           className="flex overflow-hidden gap-2 justify-center items-center self-center px-6 py-4 mt-5 w-full text-sm font-medium tracking-normal leading-snug text-center text-white bg-yellow-500 rounded max-w-[560px] min-h-[48px] max-md:px-5 max-md:max-w-full"
@@ -76,6 +78,21 @@ export function QRDetails() {
             />
           </div>
         </button>
+
+        {/* <button
+          onClick={handleReward}
+          className="flex overflow-hidden gap-2 justify-center items-center self-center px-6 py-4 mt-5 w-full text-sm font-medium tracking-normal leading-snug text-center text-white bg-yellow-500 rounded max-w-[560px] min-h-[48px] max-md:px-5 max-md:max-w-full"
+        >
+          <div className="flex gap-2 items-center self-stretch my-auto">
+            <span className="self-stretch my-auto">Cancel / Edit Report</span>
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/66de47a230a0efffb14233b1e33a676e0327ce0549735d2d360fec32d8082f56?placeholderIfAbsent=true&apiKey=877e8cc34e814577be2645c5cab8e8b7"
+              alt=""
+              className="object-contain shrink-0 self-stretch my-auto w-4 aspect-square"
+            />
+          </div>
+        </button> */}
       </div>
     </div>
   );

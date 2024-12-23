@@ -1,7 +1,7 @@
 import React from "react";
-import ProfileHeader from "./ProfileHeader";
 import ProfileImage from "./ProfileImage";
 import InfoSection from "./InfoSection";
+import { Header } from "../loginForm/Header";
 
 function Profile() {
   const personalInfo = [
@@ -30,7 +30,7 @@ function Profile() {
 
   return (
     <div className="flex flex-col items-center rounded-none max-w-[600px]">
-      <ProfileHeader />
+      <Header title="Profile" />
       <ProfileImage />
       <InfoSection title="Personal Information" items={personalInfo} />
       <InfoSection title="Emergency Contacts" items={emergencyContacts} />

@@ -1,6 +1,12 @@
-import * as React from "react";
+import React from "react";
 
-export function InputFieldReward({ label, value, iconSrc, type = "text" }) {
+export function InputFieldReward({
+  label,
+  value,
+  iconSrc,
+  type = "text",
+  onChange,
+}) {
   const inputId = `${label.toLowerCase()}-input`;
 
   return (
@@ -13,21 +19,20 @@ export function InputFieldReward({ label, value, iconSrc, type = "text" }) {
       </label>
 
       {type === "textarea" ? (
-        <div
-          className="px-3.5 pt-5 pb-24 mt-2 rounded border border-gray-200 border-solid bg-neutral-50 text-ellipsis text-zinc-900"
-          role="textbox"
-          tabIndex={0}
+        <textarea
           id={inputId}
-        >
-          {value}
-        </div>
+          value={value}
+          onChange={onChange}
+          className="w-full px-3.5 pt-3 pb-2 mt-2 rounded border border-gray-200 bg-neutral-50 text-zinc-900"
+        />
       ) : (
-        <div className="flex gap-5 justify-between px-3.5 py-4 mt-2 whitespace-nowrap rounded border border-gray-200 border-solid bg-neutral-50 text-zinc-900">
+        <div className="flex gap-5 justify-between px-3.5 py-4 mt-2 whitespace-nowrap rounded border border-gray-200 bg-neutral-50 text-zinc-900">
           <input
             type={type}
             id={inputId}
             value={value}
-            className="my-auto text-ellipsis bg-transparent border-none outline-none"
+            onChange={onChange}
+            className="flex-1 bg-transparent border-none outline-none"
           />
           {iconSrc && (
             <img
